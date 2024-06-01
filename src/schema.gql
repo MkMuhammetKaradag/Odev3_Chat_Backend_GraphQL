@@ -1,0 +1,51 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Message {
+  id: Int!
+  chatId: Int!
+  text: String!
+  userName: String!
+}
+
+type Chat {
+  id: Int!
+  chatName: String!
+  messages: [Message]!
+}
+
+type User {
+  userName: String!
+  messages: [Message]!
+}
+
+type Query {
+  chat(id: Int!): Chat!
+  chats: [Chat!]!
+  sayHello: String!
+  message(id: Int!): Message!
+  messages(chatId: Int!): [Message!]!
+  getUser(userName: String!): User!
+}
+
+type Mutation {
+  createChat(input: createChatDto!): Chat!
+  createMessage(input: createMessageDto!): Message!
+  createUser(userName: String!): User!
+}
+
+input createChatDto {
+  chatName: String!
+}
+
+input createMessageDto {
+  text: String!
+  userName: String!
+  chatId: Int!
+}
+
+type Subscription {
+  createChats: Chat!
+  createMessageSub(chatId: Int!): Message!
+}
